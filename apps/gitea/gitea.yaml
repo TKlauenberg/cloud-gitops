@@ -10,6 +10,75 @@ spec:
     repoURL: "https://dl.gitea.io/charts"
     targetRevision: 9.6.1
     helm:
+      valuesObject:
+        image:
+          rootless: true
+        redis-cluster:
+          enabled: false
+        postgresql:
+          enabled: false
+        postgresql-ha:
+          enabled: false
+        gitea:
+          config:
+            database:
+              DB_TYPE: "postgres"
+              HOST: "gitea-rw"
+              NAME: gitea
+            server:
+              DOMAIN: "https://git.open-tobi-cloud.com"
+            session:
+              PROVIDER: "memory"
+            log:
+              LEVEL: "Debug"
+          oauth:
+            - name: "keycloak"
+              provider: "openidConnect"
+              existingSecret: "keycloak-client-secret"
+              autoDiscoverUrl: "https://auth.open-tobi-cloud.com/realms/master/.well-known/openid-configuration"
+              requiredClaimName: "groups"
+              groupClaimName: "groups"
+              adminGroup: "Gitea-Admin"
+              restrictedGroup: "Gitea-User"
+          additionalConfigFromEnvs:
+            - name: GITEA__DATABASE__USER
+              secretKeyRef:
+                name: gitea-db-auth-secret
+                key: username
+            - name: GITEA__DATABASE__PASSWD
+              secretKeyRef:
+                name: gitea-db-auth-secret
+                key: password
+        service:
+          http:
+            type: "ClusterIP"
+            annotations:
+              "metallb.universe.tf/allow-shared-ip": "https://git.open-tobi-cloud.com"
+          ssh:
+            type: "ClusterIP"
+            annotations:
+              "metallb.universe.tf/allow-shared-ip": "https://git.open-tobi-cloud.com"
+        ingress:
+          enabled: true
+          className: "nginx"
+          annotations:
+            "cert-manager.io/cluster-issuer": "letsencrypt-staging"
+          hosts:
+            - host: "https://git.open-tobi-cloud.com"
+              paths:
+                - path: "/"
+                  pathType: "Prefix"
+          tls:
+            - secretName: "gitea-cert"
+              hosts:
+                - "https://git.open-tobi-cloud.com"
+        persistence:
+          enabled: true
+          size: "10Gi"
+        securityContext:
+          capabilities:
+            add:
+              - "SYS_CHROOT"
       valueFiles:
         - conf/values.yaml
   destination:
