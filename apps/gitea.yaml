@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitea-parent
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/TKlauenberg/cloud-gitops.git'
+    targetRevision: HEAD
+    path: apps/gitea
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: production
+  syncPolicy:
+    automated: {}
