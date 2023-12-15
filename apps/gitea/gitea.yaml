@@ -43,13 +43,15 @@ spec:
               restrictedGroup: "Gitea-User"
           additionalConfigFromEnvs:
             - name: GITEA__DATABASE__USER
-              secretKeyRef:
-                name: gitea-db-auth-secret
-                key: username
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-db-auth-secret
+                  key: username
             - name: GITEA__DATABASE__PASSWD
-              secretKeyRef:
-                name: gitea-db-auth-secret
-                key: password
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-db-auth-secret
+                  key: password
         service:
           http:
             type: "ClusterIP"
