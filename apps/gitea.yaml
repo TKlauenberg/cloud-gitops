@@ -14,6 +14,8 @@ spec:
     namespace: production
   syncPolicy:
     automated: {}
-  operation:
-    sync:
-      prune: true
+operation:
+  sync:
+    syncStrategy:
+      apply: {}
+    prune: true
