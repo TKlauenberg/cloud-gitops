@@ -6,7 +6,6 @@ metadata:
 spec:
   project: default
   source:
-    namespace: production
     chart: gitea
     repoURL: "https://dl.gitea.io/charts"
     targetRevision: 9.6.1
