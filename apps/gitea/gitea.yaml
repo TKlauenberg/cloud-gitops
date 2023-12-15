@@ -67,14 +67,14 @@ spec:
           annotations:
             "cert-manager.io/cluster-issuer": "letsencrypt-staging"
           hosts:
-            - host: "https://git.open-tobi-cloud.com"
+            - host: "git.open-tobi-cloud.com"
               paths:
                 - path: "/"
                   pathType: "Prefix"
           tls:
             - secretName: "gitea-cert"
               hosts:
-                - "https://git.open-tobi-cloud.com"
+                - "git.open-tobi-cloud.com"
         persistence:
           enabled: true
           size: "10Gi"
