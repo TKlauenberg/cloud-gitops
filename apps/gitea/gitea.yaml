@@ -27,7 +27,7 @@ spec:
               HOST: "gitea-rw"
               NAME: gitea
             server:
-              DOMAIN: "https://git.open-tobi-cloud.com"
+              DOMAIN: "git.open-tobi-cloud.com"
             session:
               PROVIDER: "memory"
             log:
