@@ -7,7 +7,6 @@ spec:
   bootstrap:
     initdb:
       database: gitea
-      owner: gitea
       secret:
         name: gitea-db-auth-secret
   storage:
