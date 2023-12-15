@@ -79,8 +79,6 @@ spec:
           capabilities:
             add:
               - "SYS_CHROOT"
-      valueFiles:
-        - conf/values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
