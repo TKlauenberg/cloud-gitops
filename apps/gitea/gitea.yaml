@@ -82,6 +82,6 @@ spec:
               - "SYS_CHROOT"
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: default
+    namespace: production
   syncPolicy:
     automated: {}
