@@ -51,7 +51,7 @@ ingress:
   enabled: true
   className: "nginx"
   annotations:
-    "cert-manager.io/cluster-issuer": "letsencrypt-staging"
+    "cert-manager.io/cluster-issuer": "letsencrypt-production"
   hosts:
     - host: "git.open-tobi-cloud.com"
       paths:
