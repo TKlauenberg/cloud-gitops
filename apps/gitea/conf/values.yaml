@@ -40,11 +40,11 @@ gitea:
           key: password
 service:
   http:
-    type: "Loadbalancer"
+    type: "LoadBalancer"
     annotations:
       "metallb.universe.tf/allow-shared-ip": "https://git.open-tobi-cloud.com"
   ssh:
-    type: "Loadbalancer"
+    type: "LoadBalancer"
     annotations:
       "metallb.universe.tf/allow-shared-ip": "https://git.open-tobi-cloud.com"
     labels:
