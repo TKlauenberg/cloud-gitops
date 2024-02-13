@@ -5,4 +5,4 @@ metadata:
   annotations:
     "gitea-ingress": "true"
 data:
-  "22": "gitea/gitea-ssh:2222"
+  "22": "production/gitea-ssh:22"
