@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitea-nginx-ingress
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - chart: ingress-nginx
+      repoURL: "https://kubernetes.github.io/ingress-nginx"
+      targetRevision: 4.9.0
+      helm:
+        valueFiles:
+          - $values/apps/gitea/conf/ingress-values.yaml
+    - repoURL: 'https://github.com/TKlauenberg/cloud-gitops.git'
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: production
+  syncPolicy:
+    automated: {}

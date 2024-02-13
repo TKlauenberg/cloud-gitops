@@ -52,7 +52,7 @@ ingress:
   className: "nginx"
   annotations:
     "cert-manager.io/cluster-issuer": "letsencrypt-production"
-    "nginx.ingress.kubernetes.io/tcp-services": "22:gitea-ssh"
+    "nginx.ingress.kubernetes.io/proxy-body-size": "100m"
   hosts:
     - host: "git.open-tobi-cloud.com"
       paths:
