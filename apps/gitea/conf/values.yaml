@@ -49,7 +49,7 @@ service:
       "metallb.universe.tf/allow-shared-ip": "https://git.open-tobi-cloud.com"
 ingress:
   enabled: true
-  className: "nginx"
+  className: "gitea-nginx"
   annotations:
     "cert-manager.io/cluster-issuer": "letsencrypt-production"
     "nginx.ingress.kubernetes.io/proxy-body-size": "100m"
