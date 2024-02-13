@@ -40,13 +40,16 @@ gitea:
           key: password
 service:
   http:
-    type: "ClusterIP"
+    type: "Loadbalancer"
     annotations:
       "metallb.universe.tf/allow-shared-ip": "https://git.open-tobi-cloud.com"
   ssh:
-    type: "ClusterIP"
+    type: "Loadbalancer"
     annotations:
       "metallb.universe.tf/allow-shared-ip": "https://git.open-tobi-cloud.com"
+    labels:
+      # part of ingress controller
+      "app.kubernetes.io/part-of": "gitea-nginx"
 ingress:
   enabled: true
   className: "gitea-nginx"
