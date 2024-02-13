@@ -12,7 +12,6 @@ controller:
   scope:
     enabled: true
     namespace: "production"
-  tcp:
-    annotations:
-      "gitea-ingress"
+tcp:
+  "22": "production/gitea-ssh:22"
 installCRDs: false
