@@ -14,5 +14,4 @@ controller:
     namespace: "production"
 tcp:
   "22": "production/gitea-ssh:22"
-  "2222": "production/gitea-ssh:2222"
 installCRDs: false
