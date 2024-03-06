@@ -31,6 +31,12 @@ spec:
         imagePullPolicy: Always
         # command: ["sh", "-c", "while ! nc -z localhost 2376 </dev/null; do echo 'waiting for docker daemon...'; sleep 5; done; /sbin/tini -- /opt/act/run.sh"]
         env:
+        - name: DOCKER_HOST
+          value: tcp://localhost:2376
+        - name: DOCKER_CERT_PATH
+          value: /certs/client
+        - name: DOCKER_TLS_VERIFY
+          value: "1"
         - name: GITEA_INSTANCE_URL
           value: http://gitea-http.gitea.svc:3000
         - name: GITEA_RUNNER_REGISTRATION_TOKEN
@@ -38,6 +44,8 @@ spec:
             secretKeyRef:
               name: act-runner-secret
               key: token
+        securityContext:
+          privileged: true
         resources:
           requests:
             memory: "128Mi"
