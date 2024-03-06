@@ -36,7 +36,7 @@ spec:
         - name: GITEA_RUNNER_REGISTRATION_TOKEN
           valueFrom:
             secretKeyRef:
-              name: runner-secret
+              name: act-runner-secret
               key: token
         resources:
           requests:
