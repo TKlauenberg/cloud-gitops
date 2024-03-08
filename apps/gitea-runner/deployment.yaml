@@ -1,3 +1,11 @@
+apiVersion: v1
+data:
+  token: << runner registration token goes here >>
+kind: Secret
+metadata:
+  name: runner-secret
+type: Opaque
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,8 +28,6 @@ spec:
       - name: runner-data
         persistentVolumeClaim:
           claimName: act-runner-volume
-      - name: docker-certs
-        emptyDir: {}
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
@@ -29,9 +35,8 @@ spec:
         fsGroup: 1000
       containers:
       - name: runner
-        image: gitea/act_runner:latest
+        image: gitea/act_runner:dind-rootless
         imagePullPolicy: Always
-        # command: ["sh", "-c", "while ! nc -z localhost 2376 </dev/null; do echo 'waiting for docker daemon...'; sleep 5; done; /sbin/tini -- /opt/act/run.sh"]
         env:
         - name: DOCKER_HOST
           value: tcp://localhost:2376
@@ -48,28 +53,9 @@ spec:
               key: token
         securityContext:
           privileged: true
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
         volumeMounts:
         - name: runner-data
           mountPath: /data
-        - name: docker-certs
-          mountPath: /certs
-      - name: daemon
-        image: docker:dind
-        env:
-        - name: DOCKER_TLS_CERTDIR
-          value: /certs
-        securityContext:
-          privileged: true
-        volumeMounts:
-        - name: docker-certs
-          mountPath: /certs
         resources:
           requests:
             memory: "128Mi"
