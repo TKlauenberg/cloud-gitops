@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: act-runner
+        app: act-runner-2
     spec:
       restartPolicy: Always
       volumes:
