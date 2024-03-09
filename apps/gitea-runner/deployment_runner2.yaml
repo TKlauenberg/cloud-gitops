@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: act-runner
+    app: act-runner-2
   name: act-runner-2
 spec:
   replicas: 1
