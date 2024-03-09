@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   labels:
     app: act-runner
-  name: act-runner
+  name: act-runner-2
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: act-runner
+      app: act-runner-2
   strategy: {}
   template:
     metadata:
@@ -19,7 +19,7 @@ spec:
       volumes:
       - name: runner-data
         persistentVolumeClaim:
-          claimName: act-runner-volume
+          claimName: act-runner-volume-2
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
