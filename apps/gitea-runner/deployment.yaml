@@ -2,24 +2,24 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: act-runner-2
-  name: act-runner-2
+    app: act-runner
+  name: act-runner
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: act-runner-2
+      app: act-runner
   strategy: {}
   template:
     metadata:
       labels:
-        app: act-runner-2
+        app: act-runner
     spec:
       restartPolicy: Always
       volumes:
       - name: runner-data
         persistentVolumeClaim:
-          claimName: act-runner-volume-2
+          claimName: act-runner-volume
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
@@ -52,5 +52,5 @@ spec:
             memory: "128Mi"
             cpu: "200m"
           limits:
-            memory: "512Mi"
+            memory: "1024Mi"
             cpu: "2000m"
