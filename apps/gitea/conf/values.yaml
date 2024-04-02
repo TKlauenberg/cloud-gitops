@@ -1,5 +1,5 @@
 image:
-  tag: "1.21.7"
+  tag: "1.21.10"
   rootless: true
 redis-cluster:
   enabled: false
