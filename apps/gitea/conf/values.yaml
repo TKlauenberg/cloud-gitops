@@ -1,5 +1,5 @@
 image:
-  tag: "1.21.10"
+  tag: "1.21.11"
   rootless: true
 redis-cluster:
   enabled: false
@@ -22,7 +22,7 @@ gitea:
   oauth:
     - name: "keycloak"
       provider: "openidConnect"
-      existingSecret: "keycloak-client-secret"
+      existingSecret: "gitea-keycloak-client-secret"
       autoDiscoverUrl: "https://auth.open-tobi-cloud.com/realms/master/.well-known/openid-configuration"
       requiredClaimName: "groups"
       groupClaimName: "groups"
