@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: oci-registry-ingress
+  labels:
+    name: oci-registry-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: registry.open-tobi-cloud.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: oci-registry-service
+            port:
+              number: 5000
+  tls:
+  - hosts:
+    - registry.open-tobi-cloud.com
+    secretName: oci-registry-tls-secret
