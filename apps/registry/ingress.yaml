@@ -4,6 +4,9 @@ metadata:
   name: oci-registry-ingress
   labels:
     name: oci-registry-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    nginx.ingress.kubernetes.io/proxy-body-size: 2g
 spec:
   ingressClassName: nginx
   rules:
