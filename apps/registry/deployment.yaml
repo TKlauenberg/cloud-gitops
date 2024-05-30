@@ -33,7 +33,7 @@ spec:
       volumes:
         - name: registry-config
           secret:
-            secretName: registry-config
+            secretName: oci-registry-config
         - name: oci-registry-tls-secret
           secret:
             secretName: oci-registry-tls-secret
