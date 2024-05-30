@@ -30,16 +30,16 @@ spec:
             mountPath: /auth
           - name: oci-registry-storage
             mountPath: /var/lib/registry
-        volumes:
-          - name: registry-config
-            secret:
-              secretName: registry-config
-          - name: oci-registry-tls-secret
-            secret:
-              secretName: oci-registry-tls-secret
-          - name: oci-htpasswd-secret
-            secret:
-              secretName: htpasswd-oci-registry
-          - name: oci-registry-storage
-            persistentVolumeClaim:
-              claimName: oci-registry-volume
+      volumes:
+        - name: registry-config
+          secret:
+            secretName: registry-config
+        - name: oci-registry-tls-secret
+          secret:
+            secretName: oci-registry-tls-secret
+        - name: oci-htpasswd-secret
+          secret:
+            secretName: htpasswd-oci-registry
+        - name: oci-registry-storage
+          persistentVolumeClaim:
+            claimName: oci-registry-volume
