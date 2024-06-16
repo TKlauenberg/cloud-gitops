@@ -16,9 +16,12 @@ spec:
         image: registry:2
         imagePullPolicy: IfNotPresent
         resources:
-          limits:
+          requests:
             memory: "256Mi"
             cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1"
         ports:
         - containerPort: 5000
         volumeMounts:
