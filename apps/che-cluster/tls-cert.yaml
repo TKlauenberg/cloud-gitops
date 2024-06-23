@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: che-cluster-tls-cert
   issuerRef:
-    name: letsencrypt-prod
+    name: letsencrypt-production
     kind: ClusterIssuer
   dnsNames:
     - che.open-tobi-cloud.com
