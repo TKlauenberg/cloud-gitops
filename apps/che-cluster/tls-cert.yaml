@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: che-cluster-tls-cert
+  namespace: eclipse-che
+spec:
+  secretName: che-cluster-tls-cert
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - che.open-tobi-cloud.com
+    - "*.che.open-tobi-cloud.com"
+    - "*.che-cluster.eclipse-che.svc"
+  usages:
+    - digital signature
+    - key encipherment

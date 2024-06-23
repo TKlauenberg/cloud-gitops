@@ -1,0 +1,15 @@
+kind: CheCluster
+apiVersion: org.eclipse.che/v2
+metadata:
+  name: che-cluster
+  namespace: eclipse-che
+spec:
+  components: {}
+  devEnvironments: {}
+  networking:
+    auth:
+      oAuthClientName: "eclipse-che"
+      oAuthSecret: "eclipse-che-keycloak-secret"
+      identityProviderURL: "https://auth.open-tobi-cloud.com/realms/master"
+    hostname: "che.open-tobi-cloud.com"
+    tlsSecretName: "che-cluster-tls-cert"
