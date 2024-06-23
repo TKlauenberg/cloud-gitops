@@ -56,15 +56,15 @@ spec:
         - name: CHE_VERSION
           value: next
         - name: RELATED_IMAGE_che_server
-          value: quay.io/eclipse/che-server:next
+          value: registry.open-tobi-cloud.com/che-server:next
         - name: RELATED_IMAGE_dashboard
           value: quay.io/eclipse/che-dashboard:next
         - name: RELATED_IMAGE_plugin_registry
-          value: quay.io/eclipse/che-plugin-registry:next
+          value: registry.open-tobi-cloud.com/eclipse/che-plugin-registry:next
         - name: RELATED_IMAGE_devfile_registry
           value: quay.io/eclipse/che-devfile-registry:next
         - name: RELATED_IMAGE_che_tls_secrets_creation_job
-          value: quay.io/eclipse/che-tls-secret-creator:alpine-01a4c34
+          value: registry.open-tobi-cloud.com/eclipse/che-tls-secret-creator:alpine-01a4c34
         - name: RELATED_IMAGE_single_host_gateway
           value: quay.io/eclipse/che--traefik:v2.9.10-8d81a9df1435f9f3d36ac9398465ef2d5d61e671059974db753faaed14b627de
         - name: RELATED_IMAGE_single_host_gateway_config_sidecar
@@ -104,7 +104,7 @@ spec:
         - name: CHE_DEFAULT_SPEC_DEVENVIRONMENTS_CONTAINERSECURITYCONTEXT
           value: '{"allowPrivilegeEscalation": true,"capabilities": {"add": ["SETGID",
             "SETUID"]}}'
-        image: quay.io/eclipse/che-operator:next
+        image: registry.open-tobi-cloud.com/eclipse/che-operator:next
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 10
