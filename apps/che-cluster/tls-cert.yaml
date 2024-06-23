@@ -10,8 +10,6 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - che.open-tobi-cloud.com
-    - "*.che.open-tobi-cloud.com"
-    - "*.che-cluster.eclipse-che.svc"
   usages:
     - digital signature
     - key encipherment
