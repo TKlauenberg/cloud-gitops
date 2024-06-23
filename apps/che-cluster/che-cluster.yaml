@@ -11,5 +11,5 @@ spec:
       oAuthClientName: "eclipse-che"
       oAuthSecret: "eclipse-che-keycloak-secret"
       identityProviderURL: "https://auth.open-tobi-cloud.com/realms/master"
-    hostname: "che.open-tobi-cloud.com"
+    domain: "che.open-tobi-cloud.com"
     tlsSecretName: "che-cluster-tls-cert"
