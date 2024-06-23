@@ -149,6 +149,8 @@ spec:
         - mountPath: /tmp/k8s-webhook-server/serving-certs
           name: webhook-tls-certs
           readOnly: true
+      imagePullSecrets:
+      - name: local-registry
       hostIPC: false
       hostNetwork: false
       hostPID: false
