@@ -1,0 +1,54 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitea
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - chart: docker-auth
+      repoURL: "https://cesanta.github.io/docker_auth/"
+      targetRevision: 1.4.0
+      helm:
+        valuesObject:
+          configmap:
+            data:
+              users:
+                technical:
+                  password: $2y$05$ycJqjQhOJ.PJ5LpwcnpEFu3wfp5vPGnWhahJTJ7yVezgbzd4C83iW
+                "": {}
+              acl:
+                - match: {account: technical}
+                  actions: ["*"]
+                - match: {account: ""}
+                  actions: ["pull"]
+          docker-registry:
+            configData:
+              log:
+                level: debug
+                accessLog:
+                  disabled: false
+              auth:
+                token:
+                  autoredirect: false
+                  issuer: docker-auth
+                  realm: "https://registry.open-tobi-cloud.com"
+                  service: "token-service"
+          ingress:
+            enabled: true
+            ingressClassName: nginx
+            hosts:
+              - host: registry.open-tobi-cloud.com
+                paths: /
+            tls:
+              - secretName: oci-registry-tls-secret
+                hosts:
+                  - registry.open-tobi-cloud.com
+    - repoURL: 'https://github.com/TKlauenberg/cloud-gitops.git'
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: production
+  syncPolicy:
+    automated: {}
