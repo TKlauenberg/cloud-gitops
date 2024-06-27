@@ -24,8 +24,8 @@ spec:
     locality: Essen
     organization: OpenTobiCloud
   commonName: docker-auth
-  duration: 365d
-  renewBefore: 30d
+  duration: 8760h
+  renewBefore: 720h
 ---
 apiVersion: batch/v1
 kind: Job
