@@ -30,6 +30,7 @@ metadata:
   name: transform-cert-secret
   namespace: production
 spec:
+  serviceAccountName: secret-manager
   template:
     spec:
       containers:
@@ -42,3 +43,33 @@ spec:
             CERT=$(kubectl get secret docker-registry-cert -n production -o jsonpath="{.data.tls\.crt}" | base64 -d | base64);
             kubectl create secret generic your-docker-registry-cert -n production --from-literal=tokenAuthRootCertBundle=$CERT --dry-run=client -o yaml | kubectl apply -f -;
       restartPolicy: OnFailure
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: secret-manager
+  namespace: production
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: secret-manager-role
+  namespace: production
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get", "update", "create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: secret-manager-role-binding
+  namespace: production
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: secret-manager-role
+subjects:
+- kind: ServiceAccount
+  name: secret-manager
+  namespace: production
