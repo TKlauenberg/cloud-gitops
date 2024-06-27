@@ -30,9 +30,9 @@ metadata:
   name: transform-cert-secret
   namespace: production
 spec:
-  serviceAccountName: secret-manager
   template:
     spec:
+      serviceAccountName: secret-manager
       containers:
       - name: transform-secret
         image: bitnami/kubectl:latest
