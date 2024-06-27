@@ -51,7 +51,7 @@ spec:
           extraVolumes:
             - name: transformed-oci-registry-cert
               secret:
-                secretName: transformed-oci-registry-cert
+                secretName: transformed_oci_registry_cert
     - repoURL: 'https://github.com/TKlauenberg/cloud-gitops.git'
       targetRevision: HEAD
       ref: values

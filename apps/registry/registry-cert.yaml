@@ -41,7 +41,7 @@ spec:
           - |
             set -e;
             CERT=$(kubectl get secret oci-registry-cert -n production -o jsonpath="{.data.tls\.crt}" | base64 -d | base64);
-            kubectl create secret generic "transformed-oci-registry-cert" -n production --from-literal=tokenAuthRootCertBundle=$CERT --dry-run=client -o yaml | kubectl apply -f -;
+            kubectl create secret generic transformed_oci_registry_cert -n production --from-literal=tokenAuthRootCertBundle=$CERT --dry-run=client -o yaml | kubectl apply -f -;
       restartPolicy: OnFailure
 ---
 apiVersion: v1
