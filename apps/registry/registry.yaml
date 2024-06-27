@@ -44,6 +44,14 @@ spec:
               - secretName: oci-registry-tls-secret
                 hosts:
                   - registry.open-tobi-cloud.com
+          extraVolumeMounts:
+            - name: transformed-oci-registry-cert
+              mountPath: /tokenAuthRootCertBundle
+              readOnly: true
+          extraVolumes:
+            - name: transformed-oci-registry-cert
+              secret:
+                secretName: transformed-oci-registry-cert
     - repoURL: 'https://github.com/TKlauenberg/cloud-gitops.git'
       targetRevision: HEAD
       ref: values

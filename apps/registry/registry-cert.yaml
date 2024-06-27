@@ -40,8 +40,8 @@ spec:
         args:
           - |
             set -e;
-            CERT=$(kubectl get secret docker-registry-cert -n production -o jsonpath="{.data.tls\.crt}" | base64 -d | base64);
-            kubectl create secret generic your-docker-registry-cert -n production --from-literal=tokenAuthRootCertBundle=$CERT --dry-run=client -o yaml | kubectl apply -f -;
+            CERT=$(kubectl get secret oci-registry-cert -n production -o jsonpath="{.data.tls\.crt}" | base64 -d | base64);
+            kubectl create secret generic transformed-oci-registry-cert -n production --from-literal=tokenAuthRootCertBundle=$CERT --dry-run=client -o yaml | kubectl apply -f -;
       restartPolicy: OnFailure
 ---
 apiVersion: v1
