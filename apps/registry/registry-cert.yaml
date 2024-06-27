@@ -20,9 +20,6 @@ spec:
   subject:
     countries:
       - DE
-    province: NRW
-    locality: Essen
-    organization: OpenTobiCloud
   commonName: docker-auth
   duration: 8760h
   renewBefore: 720h
