@@ -38,8 +38,9 @@ spec:
             enabled: true
             ingressClassName: nginx
             hosts:
-              - host: registry.open-tobi-cloud.com
-                paths: /
+              - host: docker-auth.test.com
+                paths:
+                  - /
             tls:
               - secretName: oci-registry-tls-secret
                 hosts:
