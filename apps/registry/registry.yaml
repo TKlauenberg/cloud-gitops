@@ -35,16 +35,7 @@ spec:
                   realm: "https://registry.open-tobi-cloud.com"
                   service: "token-service"
           ingress:
-            enabled: true
-            ingressClassName: nginx
-            hosts:
-              - host: docker-auth.test.com
-                paths:
-                  - /
-            tls:
-              - secretName: oci-registry-tls-secret
-                hosts:
-                  - registry.open-tobi-cloud.com
+            enabled: false
           extraVolumeMounts:
             - name: transformed-oci-registry-cert
               mountPath: /tokenAuthRootCertBundle

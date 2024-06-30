@@ -1,0 +1,24 @@
+# Source: docker-auth/templates/ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: release-name-docker-auth
+  labels:
+    app: docker-auth
+    chart: docker-auth-1.4.0
+    release: release-name
+    heritage: Helm
+  annotations:
+spec:
+  rules:
+    - host: docker-auth.test.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: release-name-docker-auth
+              servicePort: 5001
+  tls:
+    - hosts:
+      - registry.open-tobi-cloud.com
+      secretName: oci-registry-tls-secret
