@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: docker-auth.test.com
+    - host: registry.open-tobi-cloud.com
       http:
         paths:
           - backend:
