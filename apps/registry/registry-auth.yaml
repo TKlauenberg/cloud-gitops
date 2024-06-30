@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: oci-registry
+  name: oci-registry-auth
   namespace: argocd
 spec:
   project: default
@@ -11,6 +11,10 @@ spec:
       targetRevision: 1.4.0
       helm:
         valuesObject:
+          registry:
+            enabled: true
+          logging:
+            level: 5
           secret:
             secretName: oci-registry-tls-secret
           configmap:
@@ -34,7 +38,7 @@ spec:
                 token:
                   autoredirect: false
                   issuer: docker-auth
-                  realm: "https://registry.open-tobi-cloud.com"
+                  realm: "https://registry-auth.open-tobi-cloud.com"
                   service: "token-service"
           ingress:
             enabled: false
