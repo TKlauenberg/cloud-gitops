@@ -12,11 +12,14 @@ spec:
     - host: docker-auth.test.com
       http:
         paths:
-          - path: /
+          - backend:
+              service:
+                name: release-name-docker-auth
+                port:
+                  number: 5001
+            path: /
             pathType: Prefix
-            backend:
-              serviceName: release-name-docker-auth
-              servicePort: 5001
+
   tls:
     - hosts:
       - registry.open-tobi-cloud.com
