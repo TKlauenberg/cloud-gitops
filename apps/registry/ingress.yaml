@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: release-name-docker-auth
+  name: ingress-docker-auth
   labels:
     app: docker-auth
     chart: docker-auth-1.4.0
@@ -14,7 +14,7 @@ spec:
         paths:
           - backend:
               service:
-                name: release-name-docker-auth
+                name: oci-registry-docker-auth
                 port:
                   number: 5001
             path: /
