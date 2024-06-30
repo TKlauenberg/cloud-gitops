@@ -11,6 +11,8 @@ spec:
       targetRevision: 1.4.0
       helm:
         valuesObject:
+          secret:
+            secretName: oci-registry-tls-secret
           configmap:
             data:
               users:
@@ -36,14 +38,14 @@ spec:
                   service: "token-service"
           ingress:
             enabled: false
-          extraVolumeMounts:
-            - name: transformed-oci-registry-cert
-              mountPath: /tokenAuthRootCertBundle
-              readOnly: true
-          extraVolumes:
-            - name: transformed-oci-registry-cert
-              secret:
-                secretName: transformed-oci-registry-cert
+          # extraVolumeMounts:
+          #   - name: transformed-oci-registry-cert
+          #     mountPath: /tokenAuthRootCertBundle
+          #     readOnly: true
+          # extraVolumes:
+          #   - name: transformed-oci-registry-cert
+          #     secret:
+          #       secretName: transformed-oci-registry-cert
     - repoURL: 'https://github.com/TKlauenberg/cloud-gitops.git'
       targetRevision: HEAD
       ref: values

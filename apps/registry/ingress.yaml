@@ -4,9 +4,10 @@ metadata:
   name: ingress-docker-auth
   labels:
     app: docker-auth
-    chart: docker-auth-1.4.0
-    release: release-name
-    heritage: Helm
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    nginx.ingress.kubernetes.io/proxy-body-size: 4g
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
     - host: docker-auth.test.com
@@ -19,7 +20,6 @@ spec:
                   number: 5001
             path: /
             pathType: Prefix
-
   tls:
     - hosts:
       - registry.open-tobi-cloud.com
