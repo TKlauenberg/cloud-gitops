@@ -1,5 +1,4 @@
-# Source: docker-auth/templates/ingress.yaml
-apiVersion: extensions/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: release-name-docker-auth
@@ -8,13 +7,13 @@ metadata:
     chart: docker-auth-1.4.0
     release: release-name
     heritage: Helm
-  annotations:
 spec:
   rules:
     - host: docker-auth.test.com
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
               serviceName: release-name-docker-auth
               servicePort: 5001
