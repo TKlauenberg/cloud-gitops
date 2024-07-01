@@ -64,7 +64,7 @@ spec:
         - name: RELATED_IMAGE_devfile_registry
           value: quay.io/eclipse/che-devfile-registry:next
         - name: RELATED_IMAGE_che_tls_secrets_creation_job
-          value: registry.open-tobi-cloud.com/eclipse/che-tls-secret-creator:alpine-01a4c34
+          value: registry.open-tobi-cloud.com/eclipse/che-tls-secret-creator:alpine-4e10fbe
         - name: RELATED_IMAGE_single_host_gateway
           value: quay.io/eclipse/che--traefik:v2.9.10-8d81a9df1435f9f3d36ac9398465ef2d5d61e671059974db753faaed14b627de
         - name: RELATED_IMAGE_single_host_gateway_config_sidecar
