@@ -16,7 +16,7 @@ spec:
           logging:
             level: 5
           secret:
-            secretName: oci-registry-tls-secret
+            secretName: oci-registry-auth-tls-secret
           configmap:
             data:
               users:
