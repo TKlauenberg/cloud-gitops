@@ -14,7 +14,7 @@ spec:
         paths:
           - backend:
               service:
-                name: oci-registry-docker-auth
+                name: oci-registry-auth-docker-auth
                 port:
                   number: 5001
             path: /
