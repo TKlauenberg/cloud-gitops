@@ -56,7 +56,7 @@ spec:
         - name: CHE_VERSION
           value: next
         - name: RELATED_IMAGE_che_server
-          value: registry.open-tobi-cloud.com/che-server:next
+          value: registry.open-tobi-cloud.com/eclipse/che-server:next
         - name: RELATED_IMAGE_dashboard
           value: quay.io/eclipse/che-dashboard:next
         - name: RELATED_IMAGE_plugin_registry
