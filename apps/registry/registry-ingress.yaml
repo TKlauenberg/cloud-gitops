@@ -6,7 +6,7 @@ metadata:
     name: oci-registry-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
-    nginx.ingress.kubernetes.io/proxy-body-size: 4g
+    nginx.ingress.kubernetes.io/proxy-body-size: 6g
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: nginx
