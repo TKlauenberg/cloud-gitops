@@ -8,7 +8,7 @@ spec:
   devEnvironments: {}
   networking:
     auth:
-      oAuthClientName: "eclipse-che"
+      oAuthClientName: "pikube"
       oAuthSecret: "eclipse-che-keycloak-secret"
       identityProviderURL: "https://auth.open-tobi-cloud.com/realms/master"
     domain: "che.open-tobi-cloud.com"
