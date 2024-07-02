@@ -11,5 +11,8 @@ spec:
       oAuthClientName: "pikube"
       oAuthSecret: "eclipse-che-keycloak-secret"
       identityProviderURL: "https://auth.open-tobi-cloud.com/realms/master"
+      advancedAuthorization:
+        allowGroups:
+          - "che-developers"
     domain: "che.open-tobi-cloud.com"
     tlsSecretName: "che-cluster-tls-cert"
