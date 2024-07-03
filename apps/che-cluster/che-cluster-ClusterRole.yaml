@@ -1,0 +1,45 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: che-cluster-clusterrole
+  labels:
+    app.kubernetes.io/part-of: che.eclipse.org
+rules:
+  - apiGroups:
+    - workspace.devfile.io
+    resources:
+    - devworkspaces
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  - verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+    apiGroups:
+    - ""
+    resources:
+    - pods
+    - services
+    - endpoints
+    - persistentvolumeclaims
+    - events
+    - configmaps
+    - secrets
+    - serviceaccounts
+    - pods/log
+    - pods/exec
+    - pods/portforward
+    - pods/proxy
+    - pods/status

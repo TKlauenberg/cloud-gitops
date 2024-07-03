@@ -4,8 +4,14 @@ metadata:
   name: che-cluster
   namespace: eclipse-che
 spec:
-  components: {}
-  devEnvironments: {}
+  components:
+    cheServer:
+      clusterRoles:
+        - che-cluster-clusterrole
+  devEnvironments:
+    user:
+      clusterRoles:
+        - che-cluster-clusterrole
   networking:
     auth:
       oAuthClientName: "pikube"
