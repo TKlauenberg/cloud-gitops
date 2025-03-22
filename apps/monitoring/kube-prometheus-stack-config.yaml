@@ -3,6 +3,8 @@ crds:
 
 prometheusOperator:
   admissionWebhooks:
+    certmanager:
+      enabled: true
     deployment:
       resources:
         requests:
