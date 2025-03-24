@@ -6,10 +6,7 @@ metadata:
     kubenav.io/prometheus: dashboard
 data:
   charts: |
-    - title: 'HTTP Requests'
-      unit: 'req/s'
+    - title: 'temp'
+      unit: '°C'
       queries:
-        - label: '{{.response_code}}'
-          query: 'sum(rate(nginx_ingress_controller_requests{namespace="default"}[1m])) by (response_code)'
-          legendFormat: '{{.response_code}}'
-          color: '#FF0000'
+        - query: 'node_hwmon_temp_celsius'
