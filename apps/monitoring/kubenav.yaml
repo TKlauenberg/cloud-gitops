@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mydashboard-mobile
+data:
+  charts: |
+    - title: 'HTTP Requests'
+      unit: 'req/s'
+      queries:
+        - label: '{{.response_code}}'
+          query: 'sum(rate(nginx_ingress_controller_requests{namespace="default"}[1m])) by (response_code)'
+          legendFormat: '{{.response_code}}'
+          color: '#FF0000'
