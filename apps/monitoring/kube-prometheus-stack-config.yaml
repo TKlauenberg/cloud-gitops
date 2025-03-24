@@ -1,3 +1,5 @@
+commonLabels:
+  heritage: gitops
 crds:
   enabled: false
 
