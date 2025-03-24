@@ -2,6 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mydashboard-mobile
+  labels:
+    kubenav.io/prometheus: dashboard
 data:
   charts: |
     - title: 'HTTP Requests'
