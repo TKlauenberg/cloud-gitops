@@ -42,7 +42,7 @@ wadm:
       tag: v0.15.0
     config:
       nats:
-        server: "nats://nats-headless.default.svc.cluster.local"
+        server: "nats://nats-headless.svc"
         # creds:
         #   jwt: ""
         #   seed: ""
