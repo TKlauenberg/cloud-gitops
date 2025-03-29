@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wasmcloud
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/TKlauenberg/cloud-gitops.git'
+    targetRevision: HEAD
+    path: apps/wasmcloud
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: wasmcloud
+  syncPolicy:
+    automated:
+      prune: true

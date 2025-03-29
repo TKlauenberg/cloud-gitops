@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wasmcloud-platform
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  sources:
+    - chart: wasmcloud-platform
+      repoURL: "oci://ghcr.io/wasmcloud/charts/wasmcloud-platform"
+      targetRevision: 0.1.2
+      helm:
+        valueFiles:
+          - $values/apps/wasmcloud/wasmcloud-platform-config.yaml
+    - repoURL: 'https://github.com/TKlauenberg/cloud-gitops.git'
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: wasmcloud
+  syncPolicy:
+    automated: {}
