@@ -69,7 +69,7 @@ host:
 
 hostConfig:
   # Whether to use the wasmCloud host configuration custom resource; defaults to "false".
-  enabled: true
+  enabled: false
   name: wasmcloud-host
   lattice: default
   # # Number of hosts (pods). Defaults to 1.
