@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   sources:
-    - chart: "wasmcloud-platform"
-      repoURL: "oci://ghcr.io/wasmcloud/charts/"
+    - chart: "wasmcloud/charts/wasmcloud-platform"
+      repoURL: "ghcr.io"
       targetRevision: 0.1.2
       helm:
         valueFiles:
