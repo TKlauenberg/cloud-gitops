@@ -72,6 +72,7 @@ hostConfig:
   enabled: true
   name: wasmcloud-host
   lattice: default
+  natsAddress: nats-headless.wasmcloud.svc
   # # Number of hosts (pods). Defaults to 1.
   # hostReplicas: 1
   # Which version of wasmCloud to use; defaults to "latest"
