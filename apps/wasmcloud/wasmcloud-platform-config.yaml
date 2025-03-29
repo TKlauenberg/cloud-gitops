@@ -42,7 +42,7 @@ wadm:
       tag: v0.15.0
     config:
       nats:
-        server: "nats://nats-headless.svc"
+        server: "nats://nats-headless.wasmcloud.svc"
         # creds:
         #   jwt: ""
         #   seed: ""
