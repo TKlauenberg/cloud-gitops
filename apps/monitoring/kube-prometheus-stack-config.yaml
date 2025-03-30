@@ -3,6 +3,20 @@ commonLabels:
 crds:
   enabled: false
 
+grafana:
+  ingress:
+    enabled: true
+    pathType: Prefix
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    hosts:
+      - monitoring.open-tobi-cloud.com
+    tls:
+      - secretName: grafana-tls
+        hosts:
+          - monitoring.open-tobi-cloud.com
+
 prometheusOperator:
   admissionWebhooks:
     certmanager:
