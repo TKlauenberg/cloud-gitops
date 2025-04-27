@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: knative
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/TKlauenberg/cloud-gitops.git'
+    targetRevision: HEAD
+    path: apps/knative
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: knative-operator
+  syncPolicy:
+    automated:
+      prune: true
