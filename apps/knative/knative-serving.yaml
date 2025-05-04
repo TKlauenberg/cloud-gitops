@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: knative-serving
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+---
+apiVersion: operator.knative.dev/v1beta1
+kind: KnativeServing
+metadata:
+  name: knative-serving
+  namespace: knative-serving
+annotations:
+  argocd.argoproj.io/sync-wave: "2"
+spec:
+  ingress:
+    kourier:
+      enabled: true
+  config:
+    network:
+      ingressClass: kourier.ingress.networking.knative.dev
